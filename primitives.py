@@ -1,4 +1,6 @@
+
 print("Houston we have lift off!!!!")
+
 # _ Numbers & Variables
 # < Left is "location" or "thing" right is the VALUE
 this_variable = 10
