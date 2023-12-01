@@ -9,6 +9,15 @@
 # todo - Refactor using strings
 # todo - Refactor using basic conditionals
 
+#! RIOT:
+
+#! R: Restate the problem being solved
+#! I: Input (what is the expected input?)
+#! O: Output (what is the expected output?)
+#! T: Test cases (walk through test cases)
+
+# < when in doubt... print() + rubber duck it with pseudo code
+
 def int_count(input):
     print(f"input value: {input}")
     if input < 0:

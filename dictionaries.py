@@ -142,9 +142,9 @@ def find_one(all_users, user_name, kid_to_add):
       user['children'].append(kid_to_add)
       user['has_kids'] = True
 
-find_one(all_users,"Timmy", this_user)
 new_user['children'].append(user_timmy)
 
+find_one(all_users,"Timmy", this_user)
 find_one(all_users,"DB", "Zebulon")
 find_one(all_users,"Clint", [this_user, "Sam"])
 print(all_users)
