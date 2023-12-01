@@ -9,8 +9,8 @@ def function_name():
     print("hello_world from inside the function code block")
     return "return anything from inside the function we like"
 
-# x = function_name()
-# print(x)
+x = function_name()
+print(x)
 
 # _ Conditionals
 # < if, elif, else (conditional statements)
@@ -94,12 +94,15 @@ def accessing_list_values():
 
     # > Adding values to a list
     # * list_name.append(new_value)
+    # < add an element to the end of a list
     numbers.append(9)
     print(numbers)
 
     # > Removing values of a list
     # * list_name.pop()
+    # < removes and returns the last element from the list
     # * list_name.pop(0)
+    # < removes and returns the element at the specified index
     numbers.pop()
     print(numbers)
     numbers.pop(4)
@@ -107,6 +110,7 @@ def accessing_list_values():
 
     # > Number of Elements
     # * print(len(list_name))
+    # < get the length or the number of items in an object
     print(len(numbers))
 # accessing_list_values()
 
