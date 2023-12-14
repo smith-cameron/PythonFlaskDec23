@@ -1,9 +1,14 @@
--- Most Queries (all basic) follow a specific structure with similarities
--- What ACTION
--- What TABLE
--- What COLUMNS
--- What VALUES
--- Where CONDITION
+
+--< https://www.sql-practice.com/
+--< [Queries - Slideshow](https://docs.google.com/presentation/d/1STD18JBWbJ4Uf4sKs29n3LDYNiOqqdj81YsHd6_bBJc/edit#slide=id.g181e2dc7e50_0_21)
+
+--? Most Queries (all basic) follow a specific structure with similarities
+--? What ACTION
+--? What TABLE
+--? What COLUMNS
+--? What VALUES
+--? Where CONDITION
+
 SELECT * FROM users;
 
 SELECT * FROM users ORDER BY id DESC LIMIT 1;
@@ -50,7 +55,7 @@ WHERE users.id = 7;
 
 -- single line comments
 /* multi line
-comments*/
+comments */
 
 -- CONDITIONALS
 SELECT * FROM users WHERE id = 5;
