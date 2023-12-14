@@ -113,8 +113,6 @@ class User:
 		else:
 			return False
 
-
-
 user1 = {
         'id': 1,
         'first_name': 'Cameron',
