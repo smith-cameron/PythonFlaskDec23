@@ -70,7 +70,6 @@ class User:
 			# Without __repr__ this would print <__main__.User object at 0x000002EEAE0A3AF0>
 			print(i)
 
-
 user1 = User("Jane", "Doe", 56, "jd@email.com", True)
 user2 = User("John", "Doe", 56, "jd@email.com")
 user3 = User("Timmy", "Jimmy-Jam", 34, "tjj@email.com")
