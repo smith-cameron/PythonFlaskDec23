@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- based on the folder structure on the right -->
+    <!-- linking a css style sheet -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/my_style.css') }}"
+    />
+    <!-- linking a javascript file -->
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='scripts/my_script.js') }}"
+    ></script>
+    <!-- linking an image -->
+  </head>
+  <body>
+    <h1>Countdown</h1>
+    {% for stuff in range(unicorn, 0, -1) %}
+      {{stuff}}
+    {% endfor %}
+    <h2>{{airport}} we have liftoff!!!!!!</h2>
+    <p>{{things | length}} things in {{things}}</p> 
+    {% for stuff in things %}
+      {{stuff.capitalize()}}
+    {% endfor %}
+    {% filter upper %}
+      <h2>{{traffic_controller}} we have a problem</h2>
+    {% endfilter %}
+    <img src="{{ url_for('static', filename='imgs/code-works-code-not-working - Copy.gif') }}" />
+  </body>
+</html>

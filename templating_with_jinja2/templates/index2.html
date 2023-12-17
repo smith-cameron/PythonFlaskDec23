@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {% if is_event %}
+    <h2>{{traffic_controller}} {{obs}}</h2>
+  {% endif %}
+
+  <h1>Random Numbers</h1>
+  <h3>MAX: {{random_numbers | max}}</h3>
+  <h3>MIN: {{random_numbers | min}}</h3>
+  {% for number in random_numbers | sort %}
+      <p>{{ number }}</p>
+  {% endfor %}
+  <h1>Students</h1>
+  {% for student in students %}
+    <p>{{ student['name'] }} - {{ student['age'] }}</p>
+    {% for key, value in student | items%}
+      <p>{{key | capitalize}}: {{value}}</p>
+    {% endfor %}
+  {% endfor %}
+</body>
+</html>
