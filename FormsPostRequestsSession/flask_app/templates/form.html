@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    {# Jinja Comments #}
+    {# action -  the route that will process or “catch”  the form info #}
+    {# method - singular!! #}
+    {# we'll want this to be a POST request #}
+    <form action="/submit_form" method="post" >
+      <label for="first_name">First Name:</label>
+      {# Each element should have a UNIQUE name attribute #}
+      <input type="text" name="first_name" />
+      {# name attributes are how we will identify one field from another #}
+      <label for="last_name">Last Name:</label>
+      <input type="text" name="last_name" />
+      {# type options are important for:  #}
+      <label for="age">Age:</label>
+      {# sanatizing data type provided by user #}
+      <input type="number" name="age" />
+      <label for="email">Email:</label>
+      <input type="email" name="email" />
+      {# different front-end functionality #}
+      <label for="password">Password:</label>
+      <input type="password" name="password" />
+      {# a way to submit the form #}
+      {# <input type='submit' value='create user'> #}
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

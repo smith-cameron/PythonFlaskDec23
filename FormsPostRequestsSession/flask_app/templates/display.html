@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/Alien.ico') }}">
+  <title>Display</title>
+</head>
+<body>
+  <h1> THE FORM INFO(FROM SESSION)</h1>
+  <h4>{{session['first']}} {{session['last']}}</h4>
+  <h4>I am {{session['age']}} years old</h4>
+  <h4>Contact: {{email}}</h4>
+  <h4>Password: {{password}}</h4>
+  <a href="/clear_session">LOGOUT</a>
+</body>
+</html>
