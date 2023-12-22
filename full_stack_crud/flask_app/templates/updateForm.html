@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- link -->
+    <title>Form</title>
+  </head>
+  <body>
+    {# Jinja Comments #}
+    {# action -  the route that will process or “catch”  the form info #}
+    {# method - singular!! #}
+    {# we'll want this to be a POST request #}
+    <form action="/update_user/{{user.id}}" method="post" >
+      <label for="first_name">First Name:</label>
+      {# Each element should have a UNIQUE name attribute #}
+      <input type="text" name="first_name" value="{{user.last_name}}"/>
+      {# name attributes are how we will identify one field from another #}
+      <label for="last_name">Last Name:</label>
+      <input type="text" name="last_name"  value="{{user.last_name}}"/>
+      {# type options are important for:  #}
+      <label for="age">Age:</label>
+      {# sanatizing data type provided by user #}
+      <input type="number" name="age"  value="{{user.age}}"/>
+      <label for="email">Email:</label>
+      <input type="email" name="email"  value="{{user.email}}"/>
+      {# different front-end functionality #}
+      <!-- <input type="hidden" value="{{user.password}}" name = "password"/> -->
+      {# a way to submit the form #}
+      {# <input type='submit' value='create user'> #}
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
