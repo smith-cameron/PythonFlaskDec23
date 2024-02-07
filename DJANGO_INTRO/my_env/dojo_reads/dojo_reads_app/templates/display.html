@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  {% load static %}
+  <link rel="shortcut icon" href="{% static 'Bookmark.ico' %}">
+</head>
+<body>
+  <h1> {{this_author.first_name}} {{this_author.last_name}}</h1>
+  {% for book in this_author.books.all %}
+      {{book.id}}
+      {{book.title}}
+      {{book.review}}
+      {{book.rating}}
+    {% endfor %}
+</body>
+</html>
