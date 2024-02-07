@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- style link -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style/style.css') }}"
+    />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/Alien.ico') }}">
+    <title>User Form</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1 id="header">Dashboard</h1>
+      <a class="button" href="/car/new">Create Car</a>
+      <a class="button" href="/user/logout">Logout</a>
+      <div id="body">
+        <div class="displayCol">
+          <h2>All Cars</h2>
+          <table>
+            <thead>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Year</th>
+              <th>Color</th>
+            </thead>
+            <tbody>
+              {% for car in all_cars %}
+              <tr>
+                <td>{{car.make}}</td>
+                <td>{{car.model}}</td>
+                <td>{{car.year}}</td>
+                <td>{{car.color}}</td>
+                <td><a class="button" href="/car/delete/{{car.id}}">Delete</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="displayCol">
+          <h2>All Users</h2>
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Added On</th>
+              <th>Actions</th>
+            </thead>
+            <tbody>
+              {% for user in all_users %}
+              <tr>
+                <td>{{user.first_name}} {{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.created_at}}</td>
+                <td>
+                  <a class="button" href="/user/delete/{{user.id}}">Delete</a> 
+                  <a class="button" href="/user/edit/{{user.id}}">Update</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

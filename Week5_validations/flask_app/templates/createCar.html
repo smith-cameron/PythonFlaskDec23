@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- style link -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style/style.css') }}"
+    />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/Alien.ico') }}">
+    <title>Car Form</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <a class="button" href="/home">Dashboard</a>
+      <div id="body">
+        <div class="inputForm">
+          <h2>Add A Car</h2>
+          <form action="/car/create" method="post">
+            <div class="formGroup">
+              <label for="make">make:</label>
+              <input type="text" name="make" />
+            </div>
+            <div class="formGroup">
+              <label for="model">model:</label>
+              <input type="text" name="model" />
+            </div>
+            <div class="formGroup">
+              <label for="year">year:</label>
+              <input type="number" name="year" />
+            </div>
+            <div class="formGroup">
+              <label for="color">color:</label>
+              <input type="txt" name="color" />
+            </div>
+            <button class="button">Submit</button>
+          </form>
+          {% with messages = get_flashed_messages(category_filter = ['car']) %}     <!-- declare a variable called messages -->
+            {% if messages %}                            <!-- check if there are any messages -->
+              {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
