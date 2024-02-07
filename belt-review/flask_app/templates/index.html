@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- style link -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/Alien.ico') }}">
+    <title>User Form</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1 id="header">Coding Dojo Wall</h1>
+      <div id="body">
+        <div class="displayCol">
+          <h2>Register</h2>
+          <form id="registration" method="post">
+            <div class="formGroup">
+              <label for="first_name">First Name:</label>
+              <input type="text" name="first_name" />
+            </div>
+            <div class="formGroup">
+              <label for="last_name">Last Name:</label>
+              <input type="text" name="last_name" />
+            </div>
+            <div class="formGroup">
+              <label for="age">Age:</label>
+              <input type="number" name="age" />
+            </div>
+            <div class="formGroup">
+              <label for="email">Email:</label>
+              <input type="email" name="email" />
+            </div>
+            <div class="formGroup">
+              <label for="password">Password:</label>
+              <input type="password" name="password" />
+            </div>
+            <div class="formGroup">
+              <label for="password_conf">Confirm Password:</label>
+              <input type="password" name="password_conf" />
+            </div>
+            <button class="button btn-danger">Register</button>
+          </form>
+          <div id="reg_error_list"></div>
+          {# {% with messages = get_flashed_messages(category_filter = ['reg']) %}
+            {% if messages %}
+              {% for message in messages %}
+                <p class="error">{{message}}</p>
+              {% endfor %}
+            {% endif %}
+          {% endwith %} #}
+        </div>
+        <div class="displayCol">
+          <h2>Login</h2>
+          <form action="/user/login" method="post">
+            <div class="formGroup">
+              <label for="email">Email:</label>
+              <input type="email" name="email" />
+            </div>
+            <div class="formGroup">
+              <label for="password">Password:</label>
+              <input type="password" name="password" />
+            </div>
+            <button class="button btn-danger">Login</button>
+          </form>
+          {% with messages = get_flashed_messages(category_filter = ['login']) %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="error">{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+</html>

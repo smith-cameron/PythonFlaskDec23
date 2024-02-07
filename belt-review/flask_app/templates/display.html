@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- style link -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/Alien.ico') }}">
+    <title>User Form</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- {# Personalize header #} -->
+      {% if session['user_id'] == current_user.id %}
+        <h1 id="header">YOUR WALL</h1>
+      {% else %}
+        <h1 id="header">{{current_user.first_name}} {{current_user.last_name}}'s Wall</h1>
+      {% endif %}
+      <a href="/user/logout" class="button">Log Out</a>
+      <a href="/user/home" class="button">Dashboard</a>
+      <div id="body">
+        <!-- {# TODO Send direct messages form #} -->
+        <!-- {# TODO Display recieved messages below form #} -->
+        <!-- {# TODO Display recieved messages COUNT #} -->
+        {% if session['user_id'] == current_user.id %}
+          <div class="displayCol">
+            <form action="/message/create" method="post">
+              <div class="formGroup">
+                <label for="message_content">Send Messages</label>
+                <input type="text" name="message_content" />
+              </div>
+              <div class="formGroup">
+                <select name="reciever_id">
+                  {% for user in all_users %}
+                    <option value="{{user.id}}">{{user.first_name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <button class="button btn-danger">Publish</button>
+            </form>
+            {% with messages = get_flashed_messages(category_filter = ['message']) %}
+              {% if messages %}
+                {% for message in messages %}
+                  <p class="error">{{message}}</p>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+          </div>
+        {% endif %}
+        <div class="displayCol">
+          <h2 class="subHead">All Posts</h2>
+          <div class="displayBody">
+            <!-- {# Loop through one users posts #} -->
+            {% for post in current_user.posts %}
+            <div class="displayCard">
+              <div class="cardContent">
+                <h4>{{post.created_at}}</h4>
+                <p>{{post.post_content}}</p>
+              </div>
+              {% if post.creator_id == session['user_id'] %}
+                <a href="/post/edit/{{post.id}}" class="button">Edit</a>
+                <a href="/post/delete/{{post.id}}" class="button">Delete</a>
+              {#{% endif %}
+              {% if post.creator_id != session['user_id'] %}#}
+              {% else %}
+                <a href="#" class="button">Like</a>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          {% if session['user_id'] == current_user.id %}
+            <h2 class="subHead">{{my_messages | length}} Recieved Messages</h2>
+            <div class="displayBody">
+              <!-- {# Loop through one users posts #} -->
+              {% for message in my_messages %}
+              <div class="displayCard">
+                <div class="cardContent">
+                  <h4>Sent by {{message.sender.first_name}} on {{message.created_at}}</h4>
+                  <p>{{message.message_content}}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- style link -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/Alien.ico') }}">
+    <title>User Form</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1 id="header">Coding Dojo Wall</h1>
+      <h2 class="subHead">WELCOME {{current_user.first_name}} {{current_user.last_name}}!</h2>
+      <a href="/user/logout" class="button">Log Out</a>
+      <a href="/user/display/{{session['user_id']}}" class="button">My Posts/DMs</a>
+      <div id="body">
+        <div class="displayCol">
+          <form action="/post/create" method="post">
+            <div class="formGroup">
+              <label for="post_content">Whats on your mind?</label>
+              <input type="text" name="post_content" />
+            </div>
+            <button class="button btn-danger">Publish</button>
+          </form>
+          {% with messages = get_flashed_messages(category_filter = ['post']) %}
+            {% if messages %}
+              {% for message in messages %}
+                <p class="error">{{message}}</p>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </div>
+        <div class="displayCol">
+          <h2 class="subHead">All Community Posts</h2>
+          <!-- for loop through all the things -->
+          <div class="displayBody">
+            {% for post in all_posts %}
+            <div class="displayCard">
+              <div class="cardContent">
+                <h4><a href="/user/display/{{post.creator.id}}">{{post.creator.first_name}}</a> - {{post.created_at.strftime("%b %d")}}</h4>
+                <p>{{post.post_content}}</p>
+              </div>
+              {% if post.creator.id == current_user.id %}
+              <a href="/post/delete/{{post.id}}" class="button">Delete</a>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

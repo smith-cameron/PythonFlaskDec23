@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- style link -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/Alien.ico') }}">
+    <title>User Form</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1 id="header">Update Your Post</h1>
+      <a href="/user/logout" class="button">Log Out</a>
+      <a href="/user/display/{{session['user_id']}}" class="button">My Posts/DMs</a>
+      <a href="/user/home" class="button">Dashboard</a>
+      <div id="body">
+        <div class="displayCol">
+          <form action="/post/update/{{post_to_edit.id}}" method="post">
+            <div class="formGroup">
+              <label for="post_content">What would you like to change?</label>
+              <input type="text" name="post_content" value="{{post_to_edit.post_content}}"/>
+            </div>
+            <button class="button btn-danger">Update</button>
+          </form>
+          {% with messages = get_flashed_messages(category_filter = ['post']) %}
+            {% if messages %}
+              {% for message in messages %}
+                <p class="error">{{message}}</p>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </div>
+        <div class="displayCol">
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

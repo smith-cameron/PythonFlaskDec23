@@ -1,0 +1,95 @@
+*{
+  background-color: #242424;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.87);
+}
+#wrapper{
+  width: 1100px;
+  height: 1000%;
+  margin: 0 auto;
+  padding: 5% ;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  border: thin red dashed;
+}
+#body{
+  margin:3% auto;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.displayCol {
+  margin: 0 auto;
+} 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+}
+label {
+  margin-bottom: 8px;
+}
+input {
+  padding: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.button {
+  padding: 6px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: inherit;
+}
+table {
+  border-spacing: 0 20px;
+}
+td{
+  padding:4px;
+}
+#header{
+  margin-bottom: 20px;
+}
+.error{
+  color:crimson;
+}
+.subHead{
+  margin-bottom: 15px;
+}
+.displayBody{
+  height: 400px;
+  overflow: auto;
+}
+.displayCard{
+  margin: 0 15px 15px 0;
+  display: flex;
+  align-items: flex-start;
+}
+.cardContent{
+  padding-bottom: 10px;
+  /* border-bottom: 1px solid ; */
+}
+.cardContent h4 {
+  text-align: left;
+  margin-bottom: 10px;
+  
+}
+.cardContent a {
+  text-decoration: none;
+}
+.cardContent a:hover {
+  color: brown; 
+}
+.cardContent p {
+  width: 300px;
+  text-align: left;
+  margin-left: 25px;
+  word-wrap: break-word;
+}
